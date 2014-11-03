@@ -8,7 +8,6 @@
 yukbaca is one of many feature from merahputih.com. with yukbaca you can create project and selling your book using fund from our crowdfunding.
 
 ## Book Format
-- **epub**
 - **hpub**
 
 ## Function
@@ -22,3 +21,4 @@ yukbaca is one of many feature from merahputih.com. with yukbaca you can create 
 - post project
 	- print
 - online writing
+- create project
