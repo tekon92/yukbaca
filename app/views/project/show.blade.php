@@ -1,0 +1,1 @@
+/Users/ryanfauzi/Documents/git/yukbaca/app/views/project/show.blade.php

@@ -13,7 +13,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <?php if (Confide::user()): ?>
         <ul class="nav navbar-nav">
-              <li><a href="#">Project</a></li>
+              <li><a href="{{ URL::route('projects.index')}}">Project</a></li>
               <li><a href="#">Online Writing</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post Project <span class="caret"></span></a>
