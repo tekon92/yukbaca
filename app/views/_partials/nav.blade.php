@@ -25,7 +25,8 @@
       <?php endif ?>
       <ul class="nav navbar-nav navbar-right">
         <?php if (Confide::user()): ?>
-          <li><a href="#">Hi! <?php Confide::user()->username; ?></a></li>
+          <li><a href="#">Hi! <?php echo Confide::user()->username; ?></a></li>
+          <li><a href="#">Cart</a></li>
           <li><a href="{{ URL::route('users.logout')}}">Logout</a></li>
         <?php else: ?>
           <li><a href="{{ URL::route('users.login')}}">Login</a></li>

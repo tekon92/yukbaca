@@ -154,7 +154,7 @@ class UsersController extends Controller
      */
     public function resetPassword($token)
     {
-        return View::make('auth.reset'))
+        return View::make('auth.reset')
                 ->with('token', $token);
     }
 

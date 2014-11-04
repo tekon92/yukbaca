@@ -124,6 +124,7 @@ return array(
 		'Zizaco\Confide\ServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
 
 	),
 
@@ -193,6 +194,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Confide'    => 'Zizaco\Confide\Facade',
 		'Entrust'    => 'Zizaco\Entrust\EntrustFacade',
+		'Image' 			=> 'Intervention\Image\Facades\Image',
 
 	),
 
