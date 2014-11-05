@@ -11,8 +11,8 @@
       <a class="navbar-brand" href="{{ URL::to('/')}}">yukbaca</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <?php if (Confide::user()): ?>
         <ul class="nav navbar-nav">
+          <?php if (Confide::user()): ?>
               <li><a href="{{ URL::route('projects.index')}}">Project</a></li>
               <li><a href="#">Online Writing</a></li>
               <li class="dropdown">
@@ -21,8 +21,17 @@
                   <li><a href="#">Cetak</a></li>
                 </ul>
               </li>
-            </ul>
-      <?php endif ?>
+          <?php else: ?>
+              <li><a href="#">Store</a></li>
+              <li><a href="#">Author</a></li>
+              <li><a href="#">Start</a></li>
+              <li>
+                <form class="navbar-form navbar-right">
+                  <input type="text" placeholder="Search..." class="form-control">
+                </form>
+              </li>
+          <?php endif ?>
+        </ul>
       <ul class="nav navbar-nav navbar-right">
         <?php if (Confide::user()): ?>
           <li><a href="#">Hi! <?php echo Confide::user()->username; ?></a></li>

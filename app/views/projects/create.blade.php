@@ -5,6 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
+            {{ HTML::ul($errors->all()) }}
             {{ Form::open(array('url' => 'projects', 'files' => 'true'))}}
                   <div class="form-group">
                     {{ Form::label('project_name', 'Book Title') }}

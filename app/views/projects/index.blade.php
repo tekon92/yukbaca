@@ -4,6 +4,16 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
+        <!-- alert -->
+        @if (Session::has('message'))
+            <div class="alert alert-info">
+                {{ Session::get('message')}};
+            </div>
+        @elseif (Session::has('delete'))
+            <div class="alert alert-warning">
+                {{ Session::get('delete') }}
+            </div>
+        @endif
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -24,7 +34,7 @@
                         <td>{{ $value->project_name }}</td>
                         <td>{{ $value->author_name }}</td>
                         <td>
-                            <img src="{{ $value->book_cover }}" alt="">
+                            <img src="upload/images/{{ $value->book_cover }}" alt="">
                         </td>
                         <td>{{ $value->description }}</td>
                         <td>{{ $value->price }}</td>

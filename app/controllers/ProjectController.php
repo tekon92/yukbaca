@@ -57,11 +57,25 @@ class ProjectController extends \BaseController {
 		} else {
 			// store
 			$project = new Project;
-			$project->project_name = Input::get('bookTitle');
-			$project->author_name = Input::get('author');
+			$project->project_name = Input::get('project_name');
+			$project->author_name = Input::get('author_name');
 			$project->book_cover = Input::get('bookCover');
 			$project->description = Input::get('description');
 			$project->price = Input::get('price');
+
+			// if have file
+			if (Input::hasFile('book_cover')) {
+				$file = Input::file('book_cover');
+				$filename = str_random(25) . '-' . $file->getClientOriginalName();
+				$destinationPath = public_path() . '/upload/images/';
+				$oke = $file->move($destinationPath, $filename);
+				$res = $destinationPath . $filename;
+				$img = Image::make($res);
+				$img->resize(70, 100);
+				$img->save();
+
+				$project->book_cover = $filename;
+			}
 			$project->save();
 
 			// redirect
@@ -79,7 +93,11 @@ class ProjectController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$project = Project::find($id);
+
+		// load the view
+		return View::make('projects.show')
+			->with('project', $project);
 	}
 
 	/**
@@ -108,7 +126,48 @@ class ProjectController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// validate
+		$rules = array(
+			'project_name' 	=> 'required',
+			'author_name' 	=> 'required',
+			'description' 	=> 'required',
+			'book_cover' 	=> 'required',
+			'price' 		=> 'required'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('projects/' . $id . '/edit')
+				->withErrors($validator)
+				->withInput(Input::except('book_cover'));
+		} else {
+			$project = Project::find($id);
+			$project->project_name = Input::get('project_name');
+			$project->author_name = Input::get('author_name');
+			$project->description = Input::get('description');
+			$project->price = Input::get('price');
+
+			if (Input::hasFile('book_cover')) {
+				$file = Input::file('book_cover');
+				$filename = str_random(25) . '-' . $file->getClientOriginalName();
+				$destinationPath = public_path() . '/upload/images/';
+				$oke = $file->move($destinationPath, $filename);
+				$res = $destinationPath . $filename;
+				$img = Image::make($res);
+				$img->resize(70, 100);
+				$img->save();
+				$project->book_cover = $filename;
+			}
+			$project->save();
+
+			// redirect
+			Session::flash('message', 'Updated successfull');
+			return Redirect::to('projects');
+
+		}
+
 	}
 
 	/**
@@ -125,7 +184,7 @@ class ProjectController extends \BaseController {
 		$project->delete();
 
 		// redirect
-		Session::flash('Messages', 'Successfully deleted the project');
+		Session::flash('delete', 'Successfully deleted the project');
 		return Redirect::to('projects');
 	}
 

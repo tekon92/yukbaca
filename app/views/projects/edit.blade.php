@@ -5,18 +5,20 @@
 @section('content')
      <div class="row">
         <div class="col-lg-12">
-            {{ Form::model($project, array('url' => 'projects', 'files' => 'true'))}}
+            {{ HTML::ul($errors->all()) }}
+            {{ Form::model($project, array('route' => array('projects.update', $project->id), 'method' => 'PUT', 'files' => 'true')) }}
                   <div class="form-group">
                     {{ Form::label('bookTitle', 'Book Title') }}
-                    {{ Form::text('project_name', null, array('class' => 'form-control', 'placeholder' => 'Form Title')) }}
+                    {{ Form::text('project_name', null, array('class' => 'form-control')) }}
                   </div>
                   <div class="form-group">
                     {{ Form::label('author', 'Author') }}
-                    {{ Form::text('author_name', null,  array('class' => 'form-control', 'placeholder' => 'Author')) }}
+                    {{ Form::text('author_name', null,  array('class' => 'form-control')) }}
                   </div>
                   <div class="form-group">
                     {{ Form::label('bookCover', 'Book Cover') }}
-                    {{ Form::file('book_cover', null, array('class' => 'form-control', 'placeholder' => 'Book Cover')) }}
+                    {{ Form::text('book_cover', null, array('class' => 'form-control', 'disabled' => 'disabled')) }}
+                    {{ Form::file('book_cover', null, array('class' => 'form-control')) }}
                     <p class="help-block">Image Format must be jpeg and no more than 1 mb</p>
                   </div>
                   <div class="form-group">
@@ -25,7 +27,7 @@
                   </div>
                   <div class="form-group">
                     {{ Form::label('price', 'Price') }}
-                    {{ Form::text('price', null, array('class' => 'form-control', 'placeholder' => 'Price')) }}
+                    {{ Form::text('price', null, array('class' => 'form-control')) }}
                   </div>
                   {{ Form::submit('Submit', array('class' => 'btn btn-default btn-primary')) }}
                 {{ Form::close() }}
