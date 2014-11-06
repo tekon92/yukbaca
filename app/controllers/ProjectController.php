@@ -10,12 +10,21 @@ class ProjectController extends \BaseController {
 	 */
 	public function index()
 	{
-		// get all projects
-		$projects = Project::all();
+		$query = Project::with(["category"]);
+		$category = Input::get("category");
 
-		// load the view and pass the projects
-		return View::make('projects.index')
-			->with('projects', $projects);
+		if($category)
+		{
+			$query->where("category_id", $category);
+		}
+
+		return $query->get();
+		// // get all projects
+		// $projects = Project::all();
+
+		// // load the view and pass the projects
+		// return View::make('projects.index')
+		// 	->with('projects', $projects);
 	}
 
 	/**

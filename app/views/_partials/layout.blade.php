@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,12 +36,13 @@
           selector: "textarea"
        });
     </script>
-
+    <script src="{{ asset('js/angular-1.2.26/angular.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/angular-1.2.26/angular-cookies.min.js') }}"></script>
   </head>
 
   <body>
 
-    <div class="container">
+    <div class="container" ng-controller="main">
         @include('_partials.nav')
 
       <!-- content -->
@@ -58,5 +59,9 @@
     <script src="{{ asset('js/holder.js')}}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script
+      type="text/javascript"
+      src="{{ asset("js/shared.js") }}"
+    ></script>
   </body>
 </html>

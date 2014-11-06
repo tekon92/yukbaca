@@ -4,82 +4,188 @@
 
 <!-- page content -->
 @section('content')
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="jumbotron">
-            <h1>Hello, world!</h1>
-            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+      <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>
+           Yukbaca
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8" ng-controller="projects">
+          <h2>
+            projects
+          </h2>
+          <div class="categories btn-group">
+            <button
+              type="button"
+              class="category btn btn-default active"
+              ng-click="projects.setCategory(null)"
+              ng-class="{ 'active' : projects.category == null }"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              class="category btn btn-default"
+              ng-repeat="category in projects.categories"
+              ng-click="projects.setCategory(category)"
+              ng-class="{ 'active' : projects.category.id == category.id }"
+            >
+              @{{ category.name }}
+            </button>
           </div>
-          <div class="row">
-            <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p>
-                <a class="btn btn-default" href="#" role="button">View details &raquo;</a>
-                <a class="btn btn-primary" href="#" role="button">Buy</a>
-              </p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p>
-                <a class="btn btn-default" href="#" role="button">View details &raquo;</a>
-                <a class="btn btn-primary" href="#" role="button">Buy</a>
-              </p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p>
-                <a class="btn btn-default" href="#" role="button">View details &raquo;</a>
-                <a class="btn btn-primary" href="#" role="button">Buy</a>
-              </p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p>
-                <a class="btn btn-default" href="#" role="button">View details &raquo;</a>
-                <a class="btn btn-primary" href="#" role="button">Buy</a>
-              </p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p>
-                <a class="btn btn-default" href="#" role="button">View details &raquo;</a>
-                <a class="btn btn-primary" href="#" role="button">Buy</a>
-              </p>
-            </div><!--/.col-xs-6.col-lg-4-->
-           <div class="col-xs-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p>
-                <a class="btn btn-default" href="#" role="button">View details &raquo;</a>
-                <a class="btn btn-primary" href="#" role="button">Buy</a>
-              </p>
-            </div><!--/.col-xs-6.col-lg-4-->
-          </div><!--/row-->
-        </div><!--/.col-xs-12.col-sm-9-->
-
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
+          <div class="projects">
+            <div
+              class="project media"
+              ng-repeat="project in projects.projects | filter : projects.filterByCategory"
+            >
+              <button
+                type="button"
+                class="pull-left btn btn-default"
+                ng-click="projects.addToBasket(project)"
+              >
+                Add to basket
+              </button>
+              <div class="media-body">
+                <h4 class="media-heading">@{{ project.name }}</h4>
+                <p>
+                  Price: @{{ project.price }}, Stock: @{{ project.stock }}
+                </p>
+              </div>
+            </div>
           </div>
-        </div><!--/.sidebar-offcanvas-->
-      </div><!--/row-->
+        </div>
+        <div class="col-md-4" ng-controller="basket">
+          <h2>
+            Basket
+          </h2>
+          <form class="basket">
+            <table class="table">
+              <tr
+                class="project"
+                ng-repeat="project in basket.projects track by $index"
+                ng-class="{ 'hide' : basket.state != 'shopping' }"
+              >
+                <td class="name">
+                  @{{ project.name }}
+                </td>
+                <td class="quantity">
+                  <input
+                    class="form-control"
+                    type="number"
+                    ng-model="project.quantity"
+                    ng-change="basket.update()"
+                    min="1"
+                  />
+                </td>
+                <td class="project">
+                  @{{ project.total }}
+                </td>
+                <td class="project">
+                  <a
+                    class="remove glyphicon glyphicon-remove"
+                    ng-click="basket.remove(project)"
+                  ></a>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="4"
+                  ng-class="{ 'hide' : basket.state != 'shopping' }"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="email"
+                    ng-model="basket.email"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="4"
+                  ng-class="{ 'hide' : basket.state != 'shopping' }"
+                >
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="password"
+                    ng-model="basket.password"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="4"
+                  ng-class="{ 'hide' : basket.state != 'shopping' }"
+                >
+                  <button
+                    type="button"
+                    class="pull-left btn btn-default"
+                    ng-click="basket.authenticate()"
+                  >
+                    Authenticate
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="4"
+                  ng-class="{ 'hide' : basket.state != 'paying' }"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="card number"
+                    ng-model="basket.number"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="4"
+                  ng-class="{ 'hide' : basket.state != 'paying' }"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="expiry"
+                    ng-model="basket.expiry"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="4"
+                  ng-class="{ 'hide' : basket.state != 'paying' }"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="security number"
+                    ng-model="basket.security"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="4"
+                  ng-class="{ 'hide' : basket.state != 'paying' }"
+                >
+                  <button
+                    type="button"
+                    class="pull-left btn btn-default"
+                    ng-click="basket.pay()"
+                  >
+                    Pay
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
 @stop

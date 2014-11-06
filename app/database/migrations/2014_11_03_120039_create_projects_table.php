@@ -15,12 +15,14 @@ class CreateProjectsTable extends Migration {
 		Schema::create('projects', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('project_name', 255);
-			$table->string('author_name', 255);
-			$table->string('book_cover', 255);
+			$table->string('project_name');
+			$table->string('author_name');
+			$table->string('book_cover');
 			$table->string('description');
 			$table->float('price');
 			$table->enum('status', array('passed', 'not passed'));
+			$table->integer('stock');
+			$table->integer('category_id');
 			$table->timestamps();
 		});
 	}

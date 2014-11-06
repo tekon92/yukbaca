@@ -11,8 +11,15 @@ class UserTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			User::create([
 
+			User::create([
+                                        "username" => $faker->username,
+                                        "email" => $faker->email,
+                                        "password" => 'password',
+                                        "password_confirmation" => 'password',
+                                        "confirmation_code" => md5(uniqid(mt_rand(), true)),
+                                        "remember_token" => null,
+                                        "confirmed" => 0
 			]);
 		}
 	}

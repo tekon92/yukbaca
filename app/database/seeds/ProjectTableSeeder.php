@@ -8,16 +8,22 @@ class ProjectTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker::create();
+                        $categories = Category::all();
 
-		foreach(range(1, 10) as $index)
+		foreach($categories as $category)
 		{
-			Project::create([
+		  for ($i = 0; $i < rand(-1, 10); $i++)
+                          {
+                            Project::create([
                                         'project_name' => $faker->word,
                                         'author_name' => $faker->firstName($gender = null | 'male' | 'female'),
                                         'book_cover' => $faker->imageUrl($width = 70, $height = 100),
                                         'description' => $faker->text($maxNbChars = 200),
-                                        'price' => $faker->numberBetween($min = 50000, $max = 100000)
-            ]);
+                                        'price' => $faker->numberBetween($min = 50000, $max = 100000),
+                                        'stock' => $faker->numberBetween($min = 0, $max = 100),
+                                        'category_id' => $category->id
+                             ]);
+                          }
 		}
 	}
 

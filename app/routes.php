@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('index');
-});
+// Route::get('/', function()
+// {
+// 	return View::make('index');
+// });
 //
 
 // Confide routes
@@ -31,3 +31,17 @@ Route::get('users/logout', array('as' => 'users.logout', 'uses' => 'UsersControl
 
 // project route
 Route::resource('projects', 'ProjectController');
+
+Route::any("/",[
+    "as" => "index/index",
+    "uses" => "indexController@indexAction"
+]);
+Route::any("category/index", [
+    "as" => "category/index",
+    "uses" => "CategoryController@indexAction"
+]);
+
+Route::any("order/index", [
+    "as" => "order/index",
+    "uses" => "OrderController@indexAction"
+]);

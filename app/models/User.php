@@ -7,7 +7,7 @@ class User extends Eloquent implements ConfideUserInterface
 {
     use ConfideUser;
 
-    // protected $table = "user";
+    protected $table = "users";
     protected $hidden = ["password", "remember_token"];
     protected $guarded = ["id"];
     protected $softdelete = true;
