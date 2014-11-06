@@ -40,9 +40,9 @@
     <script type="text/javascript" src="{{ asset('js/angular-1.2.26/angular-cookies.min.js') }}"></script>
   </head>
 
-  <body>
+  <body ng-controller="main">
 
-    <div class="container" ng-controller="main">
+    <div class="container">
         @include('_partials.nav')
 
       <!-- content -->
@@ -57,8 +57,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('js/holder.js')}}"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script
       type="text/javascript"
       src="{{ asset("js/shared.js") }}"
