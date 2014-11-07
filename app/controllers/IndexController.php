@@ -4,16 +4,22 @@ class IndexController extends \BaseController {
 
 	public function indexAction()
 	{
-		$query = Project::with(["category"]);
-		$category = Input::get("category");
+		$projects = Project::paginate(10);
+		$category = Category::all();
+		// $latest = Project::all()->orderBy('created_at')->get();
 
-		if($category)
-		{
-			$query->where("category_id", $category);
-		}
-
-		// return $query->get();
-		return View::make("index");
+		return View::make("index")
+			->with('project', $projects)
+			->with('category', $category);
+			// ->with('latest', $latest);
 	}
+
+	// public function show($id)
+	// {
+	// 	$project = Project::find($id);
+
+	// 	return View::make("show")
+	// 		->with('project', $project);
+	// }
 
 }

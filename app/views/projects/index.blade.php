@@ -34,7 +34,7 @@
                         <td>{{ $value->project_name }}</td>
                         <td>{{ $value->author_name }}</td>
                         <td>
-                            <img src="upload/images/{{ $value->book_cover }}" alt="">
+                            <img src="upload/images/{{ $value->book_cover }}" width="70" height="100" class="rounded">
                         </td>
                         <td>{{ $value->description }}</td>
                         <td>{{ $value->price }}</td>
@@ -51,6 +51,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $projects->links() }}
         </div>
     </div>
     <div class="row">

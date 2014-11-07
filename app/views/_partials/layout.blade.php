@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,11 +36,26 @@
           selector: "textarea"
        });
     </script>
-    <script src="{{ asset('js/angular-1.2.26/angular.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/angular-1.2.26/angular-cookies.min.js') }}"></script>
+   <!--  <script src="{{ asset('js/angular-1.2.26/angular.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/angular-1.2.26/angular-cookies.min.js') }}"></script> -->
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <script>
+    $(function() {
+        $( "#slider-range-min" ).slider({
+            range: "min",
+            value: 37,
+            min: 1,
+            max: 700,
+            slide: function( event, ui ) {
+                $( "#amount" ).val( "$" + ui.value );
+            }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+        });
+    </script>
   </head>
 
-  <body ng-controller="main">
+  <body>
 
     <div class="container">
         @include('_partials.nav')
@@ -55,11 +70,13 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- <script src="{{ asset('js/jquery.js')}}"></script> -->
+    <script src="{{ asset('js/jquery-ui.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('js/holder.js')}}"></script>
-    <script
+    <!-- <script src="{{ asset('js/holder.js')}}"></script> -->
+ <!--    <script
       type="text/javascript"
       src="{{ asset("js/shared.js") }}"
-    ></script>
+    ></script> -->
   </body>
 </html>

@@ -6,3 +6,6 @@ body {
 .navbar {
   margin-bottom: 20px;
 }
+.spacer {
+    margin-top: 40px; /* define margin as you see fit */
+}

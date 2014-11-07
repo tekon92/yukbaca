@@ -20,7 +20,7 @@ class ProjectController extends \BaseController {
 
 		// return $query->get();
 		// get all projects
-		$projects = Project::all();
+		$projects = Project::paginate(10);
 
 		// load the view and pass the projects
 		return View::make('projects.index')
@@ -80,7 +80,7 @@ class ProjectController extends \BaseController {
 				$oke = $file->move($destinationPath, $filename);
 				$res = $destinationPath . $filename;
 				$img = Image::make($res);
-				$img->resize(70, 100);
+				$img->resize(200, 200);
 				$img->save();
 
 				$project->book_cover = $filename;
@@ -165,7 +165,7 @@ class ProjectController extends \BaseController {
 				$oke = $file->move($destinationPath, $filename);
 				$res = $destinationPath . $filename;
 				$img = Image::make($res);
-				$img->resize(70, 100);
+				$img->resize(200, 200);
 				$img->save();
 				$project->book_cover = $filename;
 			}

@@ -31,6 +31,8 @@ Route::get('users/logout', array('as' => 'users.logout', 'uses' => 'UsersControl
 
 // project route
 Route::resource('projects', 'ProjectController');
+Route::resource('backed', 'BackedController');
+
 
 Route::any("/",[
     "as" => "index/index",
