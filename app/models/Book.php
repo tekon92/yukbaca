@@ -1,9 +1,8 @@
 <?php
 
-class Project extends \Eloquent {
-    protected $fillable = ['project_name', 'author_name', 'book_cover', 'description', 'price'];
+class Book extends \Eloquent {
+	protected $fillable = ['title', 'author', 'description', 'book_cover', 'stock', 'price', 'category_id'];
 
-    protected $table = "projects";
     protected $guarded = ['id'];
     protected $softDelete = true;
 

@@ -19,12 +19,13 @@
             <div class="col-lg-12">
               <div class="category">
               <h1>Category</h1>
-                <div class="btn-group control-group">
-                    <button type="button" class="btn btn-default">All</button>
-                  <?php foreach ($category as $key => $value): ?>
-                    <button type="button" class="btn btn-default">{{ $value->name }}</button>
-                  <?php endforeach ?>
-                </div>
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#">All</a></li>
+                 @foreach ($category as $key=> $value)
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation"><a href="{{ URL::to('category/' . $value->id )}}">{{$value->name}}</a></li>
+                 @endforeach
+              </ul>
               </div>
             </div>
           </div>
@@ -39,8 +40,8 @@
                     {{ $value->description }}
                   </p>
                   <p>
-                    <a class="btn btn-default" href="{{ URL::to('backed/' . $value->id)}}" role="button">View details &raquo;</a>
-                    <a class="btn btn-primary" href="#" role="button">Buy</a>
+                    <a class="btn btn-default" href="{{ URL::to('index/' . $value->id)}}" role="button">View details &raquo;</a>
+                    by <a href="#">{{ $value->author_name }}</a>
                   </p>
                 </div><!--/.col-xs-6.col-lg-4-->
             <?php endforeach ?>

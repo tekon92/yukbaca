@@ -14,6 +14,7 @@
         <ul class="nav navbar-nav">
           <?php if (Confide::user()): ?>
               <li><a href="{{ URL::route('projects.index')}}">Project</a></li>
+              <li><a href="#">Store</a></li>
               <li><a href="#">Online Writing</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post Project <span class="caret"></span></a>

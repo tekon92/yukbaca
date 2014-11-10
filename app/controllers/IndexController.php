@@ -2,7 +2,7 @@
 
 class IndexController extends \BaseController {
 
-	public function indexAction()
+	public function index()
 	{
 		$projects = Project::paginate(10);
 		$category = Category::all();
@@ -14,12 +14,12 @@ class IndexController extends \BaseController {
 			// ->with('latest', $latest);
 	}
 
-	// public function show($id)
-	// {
-	// 	$project = Project::find($id);
+	public function show($id)
+	{
+		$project = Project::find($id);
 
-	// 	return View::make("show")
-	// 		->with('project', $project);
-	// }
+		return View::make("show")
+			->with('project', $project);
+	}
 
 }

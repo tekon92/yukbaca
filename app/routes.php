@@ -32,13 +32,14 @@ Route::get('users/logout', array('as' => 'users.logout', 'uses' => 'UsersControl
 // project route
 Route::resource('projects', 'ProjectController');
 Route::resource('backed', 'BackedController');
+Route::resource('index', 'IndexController');
 
 
 Route::any("/",[
     "as" => "index/index",
-    "uses" => "indexController@indexAction"
+    "uses" => "indexController@index"
 ]);
-Route::any("category/index", [
+Route::get("category/index/{id}", [
     "as" => "category/index",
     "uses" => "CategoryController@indexAction"
 ]);

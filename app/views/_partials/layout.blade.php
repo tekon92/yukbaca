@@ -38,7 +38,9 @@
     </script>
    <!--  <script src="{{ asset('js/angular-1.2.26/angular.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/angular-1.2.26/angular-cookies.min.js') }}"></script> -->
-    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script>
     $(function() {
         $( "#slider-range-min" ).slider({
