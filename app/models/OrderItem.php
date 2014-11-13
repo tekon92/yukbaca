@@ -5,18 +5,8 @@ class OrderItem extends \Eloquent {
     protected $guarded = ["id"];
     protected $softDelete = true;
 
-    protected function project()
+    protected function Books()
     {
-        return $this->belongsTo("Project");
-    }
-
-    public function order()
-    {
-        return $this->belongsTo("Order");
-    }
-
-    public function getTotalAttribute()
-    {
-        return $this->quantity * $this->price;
+        return $this->belongsTo('Book', 'book_id');
     }
 }

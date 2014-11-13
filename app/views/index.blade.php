@@ -33,20 +33,39 @@
           <div class="row spacer">
           <h1>Projects</h1>
             <?php foreach ($project as $key=>$value): ?>
-                 <div class="col-xs-6 col-lg-4">
-                 <img src="upload/images/{{ $value->book_cover }}" alt="">
-                  <h2>{{ $value->project_name}}</h2>
-                  <p>
-                    {{ $value->description }}
-                  </p>
-                  <p>
-                    <a class="btn btn-default" href="{{ URL::to('index/' . $value->id)}}" role="button">View details &raquo;</a>
-                    by <a href="#">{{ $value->author_name }}</a>
-                  </p>
-                </div><!--/.col-xs-6.col-lg-4-->
+                  <div class="col-xs-6 col-lg-4">
+                   <img src="upload/images/{{ $value->book_cover }}" alt="">
+                    <h2>{{ $value->project_name}}</h2>
+                    <p>
+                      {{ $value->description }}
+                    </p>
+                    <p>
+                      <a class="btn btn-default" href="{{ URL::to('index/' . $value->id)}}" role="button">View details &raquo;</a>
+                      by <a href="#">{{ $value->author_name }}</a>
+                    </p>
+                  </div><!--/.col-xs-6.col-lg-4-->
             <?php endforeach ?>
           </div><!--/row-->
             {{ $project->links() }}
+
+
+            <div class="row spacer">
+          <h1>Books</h1>
+            <?php foreach ($books as $key=>$value): ?>
+                  <div class="col-xs-6 col-lg-4">
+                   <img src="upload/images/{{ $value->book_cover }}" alt="">
+                    <h2>{{ $value->title}}</h2>
+                    <p>
+                      {{ $value->description }}
+                    </p>
+                    <p>
+                      <a class="btn btn-default" href="{{ URL::to('index/' . $value->id)}}" role="button">View details &raquo;</a>
+                      by <a href="#">{{ $value->author }}</a>
+                    </p>
+                  </div><!--/.col-xs-6.col-lg-4-->
+            <?php endforeach ?>
+          </div><!--/row-->
+            {{ $books->links() }}
         </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
@@ -56,6 +75,14 @@
               <a href="{{ URL::to('backed/' .$value->id)}}" class="list-group-item">{{ $value->project_name}}</a>
             <?php endforeach ?>
           </div>
+
+          <h1>Latest Books</h1>
+          <div class="list-group">
+            <?php foreach ($bookSort as $key => $value): ?>
+              <a href="{{ URL::to('backed/' .$value->id)}}" class="list-group-item">{{ $value->title}}</a>
+            <?php endforeach ?>
+          </div>
+
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
 @stop

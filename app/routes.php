@@ -31,8 +31,10 @@ Route::get('users/logout', array('as' => 'users.logout', 'uses' => 'UsersControl
 
 // project route
 Route::resource('projects', 'ProjectController');
+Route::resource('books', 'BookController');
 Route::resource('backed', 'BackedController');
 Route::resource('index', 'IndexController');
+Route::resource('authors', 'AuthorController');
 
 
 Route::any("/",[
@@ -48,3 +50,12 @@ Route::any("order/index", [
     "as" => "order/index",
     "uses" => "OrderController@indexAction"
 ]);
+// cart
+// Route::when('books', 'auth');
+Route::get('/cart', array('before'=>'auth', 'as' => 'cart', 'uses' => 'CartController@getIndex'));
+Route::post('/cart/add', array('before' => 'auth','uses' => 'CartController@postAddToCart'));
+Route::get('/cart/delete/{id}', array('before' => 'auth', 'as' => 'delete_book_from_cart', 'uses' => 'CartController@getDelete'));
+
+// order
+Route::get('/order', array('before' => 'auth.basic', 'uses' => 'OrderController@postOrder'));
+Route::post('/user/order', array('before' => 'auth.basic', 'uses' => 'OrderController@getIndex'));

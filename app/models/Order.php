@@ -4,6 +4,7 @@ class Order extends \Eloquent {
 	// protected $fillable = [];
 
     protected $table = "order";
+    protected $fillable = array('user_id');
     protected $guarded = ["id"];
     protected $softdelete = true;
 
@@ -14,22 +15,11 @@ class Order extends \Eloquent {
 
     public function orderItems()
     {
-        return $this->hasMany("OrderItem");
+        return $this->belongsToMany('Book', 'order_book');->withPivot('amount', 'price', 'total');
     }
 
-    public function projects()
-    {
-        return $this->belongsToMany("Projects", "order_item");
-    }
-
-    public function getTotalAttribute()
-    {
-        $total = 0;
-
-        foreach ($$this->orderItems as $orderItem) {
-            $total += $orderItem->price * $orderItem->quantity;
-        }
-
-        return $total;
-    }
+   public function User()
+   {
+    return $this->belongsTo('User', 'user_id');
+   }
 }

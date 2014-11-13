@@ -13,8 +13,9 @@
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <?php if (Confide::user()): ?>
-              <li><a href="{{ URL::route('projects.index')}}">Project</a></li>
-              <li><a href="#">Store</a></li>
+            <li><a href="{{ URL::route('projects.index')}}">Project</a></li>
+              <li><a href="{{ URL::route('books.index')}}">Store</a></li>
+              <li><a href="{{ URL::route('authors.index')}}">Author</a></li>
               <li><a href="#">Online Writing</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post Project <span class="caret"></span></a>
@@ -23,9 +24,10 @@
                 </ul>
               </li>
           <?php else: ?>
-              <li><a href="#">Store</a></li>
-              <li><a href="#">Author</a></li>
-              <li><a href="#">Start</a></li>
+             <li><a href="{{ URL::route('projects.index')}}">Project</a></li>
+              <li><a href="{{ URL::route('books.index')}}">Store</a></li>
+              <li><a href="{{ URL::route('authors.index')}}">Author</a></li>
+              <li><a href="#">Online Writing</a></li>
               <li>
                 <form class="navbar-form navbar-right">
                   <input type="text" placeholder="Search..." class="form-control">
@@ -36,7 +38,7 @@
       <ul class="nav navbar-nav navbar-right">
         <?php if (Confide::user()): ?>
           <li><a href="#">Hi! <?php echo Confide::user()->username; ?></a></li>
-          <li><a href="#">Cart</a></li>
+          <li><a href="/cart">Cart</a></li>
           <li><a href="{{ URL::route('users.logout')}}">Logout</a></li>
         <?php else: ?>
           <li><a href="{{ URL::route('users.login')}}">Login</a></li>

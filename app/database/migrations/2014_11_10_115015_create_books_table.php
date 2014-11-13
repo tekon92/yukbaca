@@ -22,6 +22,7 @@ class CreateBooksTable extends Migration {
 			$table->integer('stock');
 			$table->integer('price');
 			$table->integer('category_id');
+			$table->integer('author_id');
 			$table->timestamps();
 		});
 	}

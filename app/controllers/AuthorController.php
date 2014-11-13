@@ -1,28 +1,28 @@
 <?php
 
-class BookController extends \BaseController {
+class AuthorController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /book
+	 * GET /author
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		// load the book
-		$books = Book::all();
-		$category = Category::all();
+		// load the authoe
+		$authors = User::all();
+		$books = Book::orderBy('created_at', 'DESC')->take(5)->get();
 
-		// load the view and pass the book
-		Return View::make('books.index')
-			->with('books', $books)
-			->with('category', $category);
+		// load the author and pass the view
+		Return View::make('authors.index')
+			->with('authors', $authors)
+			->with('books', $books);
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /book/create
+	 * GET /author/create
 	 *
 	 * @return Response
 	 */
@@ -33,7 +33,7 @@ class BookController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /book
+	 * POST /author
 	 *
 	 * @return Response
 	 */
@@ -44,24 +44,23 @@ class BookController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /book/{id}
+	 * GET /author/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		// load the books
-		$books = Book::find($id);
+		// find the author
+		$authors = User::find($id);
 
-		// pass to the view
-		return View::make('books.view')
-			->with('books', $books);
+		Return View::make('authors.view')
+			->with('authors', $authors);
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /book/{id}/edit
+	 * GET /author/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -73,7 +72,7 @@ class BookController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /book/{id}
+	 * PUT /author/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -85,7 +84,7 @@ class BookController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /book/{id}
+	 * DELETE /author/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

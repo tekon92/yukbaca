@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AuthorController' => $baseDir . '/app/controllers/AuthorController.php',
     'BackedController' => $baseDir . '/app/controllers/BackedController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Book' => $baseDir . '/app/models/Book.php',
@@ -22,6 +23,7 @@ return array(
     'Boris\\ReadlineClient' => $vendorDir . '/d11wtq/boris/lib/Boris/ReadlineClient.php',
     'Boris\\ShallowParser' => $vendorDir . '/d11wtq/boris/lib/Boris/ShallowParser.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
+    'CartController' => $baseDir . '/app/controllers/CartController.php',
     'Category' => $baseDir . '/app/models/Category.php',
     'CategoryController' => $baseDir . '/app/controllers/CategoryController.php',
     'CategoryTableSeeder' => $baseDir . '/app/database/seeds/CategoryTableSeeder.php',
@@ -37,9 +39,13 @@ return array(
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'ConfideSetupUsersTable' => $baseDir . '/app/database/migrations/2014_11_03_072136_confide_setup_users_table.php',
     'CreateBooksTable' => $baseDir . '/app/database/migrations/2014_11_10_115015_create_books_table.php',
+    'CreateCartTable' => $baseDir . '/app/database/migrations/2014_11_12_085432_create_cart_table.php',
+    'CreateCartsTable' => $baseDir . '/app/database/migrations/2014_11_12_085624_create_carts_table.php',
     'CreateCategoryTable' => $baseDir . '/app/database/migrations/2014_11_05_071859_create_category_table.php',
+    'CreateOrderBooksTable' => $baseDir . '/app/database/migrations/2014_11_12_090125_create_order_books_table.php',
     'CreateOrderItemTable' => $baseDir . '/app/database/migrations/2014_11_05_110610_create_order_item_table.php',
     'CreateOrderTable' => $baseDir . '/app/database/migrations/2014_11_05_071942_create_order_table.php',
+    'CreateOrdersTable' => $baseDir . '/app/database/migrations/2014_11_12_085959_create_orders_table.php',
     'CreateProjectsTable' => $baseDir . '/app/database/migrations/2014_11_03_120039_create_projects_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',
